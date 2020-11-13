@@ -15,6 +15,9 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
+            $table->string('to');
+            $table->text('message');
+            $table->enum('status',['read','unread'])->default('unread');
             $table->timestamps();
         });
     }

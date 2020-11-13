@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        return view('contact');
     }
 
     /**
@@ -35,7 +35,14 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'to' => 'required',
+            'message' => 'required'
+        ]);
+
+        Contact::create($request->all());
+        flash('Manager Contacted')->success();
+     return redirect()->route('project.index');
     }
 
     /**
@@ -46,7 +53,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+
     }
 
     /**
